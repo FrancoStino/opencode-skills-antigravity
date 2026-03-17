@@ -12,14 +12,14 @@ const AntigravityAutoUpdater: Plugin = async ({ app }) => {
     try {
       console.log("🔄 [Antigravity Plugin] Syncing Awesome Skills...");
 
-      // Resolve the absolute path to OpenCode's config directory
-      // antigravity-awesome-skills requires the full absolute path
-      // so it installs correctly regardless of the cwd
+      // Resolve absolute path to OpenCode's config directory
+      // so it works regardless of the cwd when OpenCode is launched
       const opencodeCfgDir = path.join(os.homedir(), ".config", "opencode");
       const skillsPath = path.join(opencodeCfgDir, ".agents", "skills");
 
+      // --yes skips the interactive "Ok to proceed?" prompt from npx
       const { stdout, stderr } = await execAsync(
-        `npx antigravity-awesome-skills --path "${skillsPath}"`
+        `npx --yes antigravity-awesome-skills --path "${skillsPath}"`
       );
 
       if (stdout) console.log("✅ [Antigravity Plugin]", stdout.trim());
