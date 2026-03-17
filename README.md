@@ -12,6 +12,14 @@ Every time OpenCode starts, this plugin runs silently in the background:
 
 OpenCode will then automatically detect all skills inside that folder and make them available to the AI agent.
 
+You can then invoke any skill explicitly in your prompt:
+
+```bash
+opencode run @brainstorming help me plan a feature
+```
+
+Or simply describe what you want and OpenCode will pick the right skill automatically.
+
 ## 🚀 Installation
 
 ### 1. Add the plugin to your global OpenCode config
@@ -20,15 +28,13 @@ Edit (or create) `~/.config/opencode/opencode.json`:
 
 ```json
 {
-  "plugins": {
-    "opencode-skills-antigravity": {
-      "enabled": true
-    }
-  }
+  "plugin": [
+    "opencode-skills-antigravity"
+  ]
 }
 ```
 
-OpenCode will automatically download the npm package on next startup. No manual `npm install` required.
+OpenCode will automatically download the npm package on next startup via Bun. No manual `npm install` required.
 
 ### 2. Make sure `git` is installed
 
@@ -57,12 +63,40 @@ npm install
 npm run build
 ```
 
+### Test locally before publishing
+
+Add the local path directly to your `opencode.json` to test without publishing:
+
+```json
+{
+  "plugin": [
+    "/absolute/path/to/opencode-skills-antigravity/src/index.ts"
+  ]
+}
+```
+
 ## 📦 Publishing to npm
+
+1. Make sure you have an npm account at [npmjs.com](https://www.npmjs.com)
+2. Login from your terminal:
 
 ```bash
 npm login
+```
+
+3. Build the TypeScript source:
+
+```bash
+npm run build
+```
+
+4. Publish:
+
+```bash
 npm publish
 ```
+
+After publishing, anyone can install it just by adding `"opencode-skills-antigravity"` to the `plugin` array in their `opencode.json`.
 
 ## 📄 License
 
