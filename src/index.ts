@@ -1,4 +1,4 @@
-import type { Plugin, PluginContext, PluginEvent } from "@opencode-ai/plugin";
+import type { Plugin } from "@opencode-ai/plugin";
 import { exec } from "child_process";
 import { promisify } from "util";
 import path from "path";
@@ -6,7 +6,7 @@ import os from "os";
 
 const execAsync = promisify(exec);
 
-const AntigravityAutoUpdater: Plugin = async (_ctx: PluginContext) => {
+const AntigravityAutoUpdater: Plugin = async (_ctx) => {
   // Run asynchronously in background to not block OpenCode startup
   setTimeout(async () => {
     try {
@@ -31,11 +31,7 @@ const AntigravityAutoUpdater: Plugin = async (_ctx: PluginContext) => {
     }
   }, 0);
 
-  return {
-    event: async (_evt: PluginEvent) => {
-      // Reserved for future hooks
-    }
-  };
+  return {};
 };
 
 export default AntigravityAutoUpdater;
