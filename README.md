@@ -75,29 +75,6 @@ Add the local path directly to your `opencode.json` to test without publishing:
 }
 ```
 
-## 📦 Publishing to npm
-
-1. Make sure you have an npm account at [npmjs.com](https://www.npmjs.com)
-2. Login from your terminal:
-
-```bash
-npm login
-```
-
-3. Build the TypeScript source:
-
-```bash
-npm run build
-```
-
-4. Publish:
-
-```bash
-npm publish
-```
-
-After publishing, anyone can install it just by adding `"opencode-skills-antigravity"` to the `plugin` array in their `opencode.json`.
-
 ## 📄 License
 
 MIT © [Davide Ladisa](https://www.davideladisa.it/)
