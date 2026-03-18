@@ -18,7 +18,17 @@ const AntigravityAutoUpdater: Plugin = async (_ctx) => {
     fs.mkdirSync(skillsPath, { recursive: true });
     fs.cpSync(bundledSkillsPath, skillsPath, { recursive: true, force: true });
   } catch (error: unknown) {
-    // silently fail
+    setTimeout(async () => {
+      try {
+        const { exec } = await import("child_process");
+        const util = await import("util");
+        const execAsync = util.promisify(exec);
+        const fallbackPath = path.join(os.homedir(), ".config", "opencode", ".agents", "skills");
+        await execAsync(`npx --yes antigravity-awesome-skills --path "${fallbackPath}"`);
+      } catch (e) {
+        // silently fail completely
+      }
+    }, 0);
   }
 
   return {};
