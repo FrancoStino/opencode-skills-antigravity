@@ -14,8 +14,10 @@ OpenCode automatically detects all skills and makes them available to the AI age
 You can then invoke any skill explicitly in your prompt:
 
 ```bash
-opencode run @brainstorming help me plan a feature
+opencode run /brainstorming help me plan a feature
 ```
+
+Skills are also available as `/` commands directly in the OpenCode chat (e.g., `/brainstorming`).
 
 Or simply describe what you want and OpenCode will pick the right skill automatically.
 
