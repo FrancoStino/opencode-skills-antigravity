@@ -45,10 +45,9 @@ Verify CLI is logged in:
 apify info  # Should return your username
 ```
 
-If not logged in, check if `APIFY_TOKEN` environment variable is defined. If not, ask the user to generate one at https://console.apify.com/settings/integrations, then:
+If not logged in, check if `APIFY_TOKEN` environment variable is defined. If not, ask the user to generate one at https://console.apify.com/settings/integrations, add it to their shell or secret manager without putting the literal token in command history, then run:
 
 ```bash
-export APIFY_TOKEN="your_token_here"
 apify login
 ```
 
