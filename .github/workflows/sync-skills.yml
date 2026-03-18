@@ -1,0 +1,64 @@
+name: Auto-Sync Skills
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-skills:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync skills
+        run: |
+          rm -rf .agents/skills
+          npx --yes antigravity-awesome-skills --path ".agents/skills"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -n "$(git status --porcelain .agents/skills)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Bump version and push
+        id: bump
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          npm ci
+          NEW_VERSION=$(npm version patch --no-git-tag-version)
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          git add .agents/skills package.json package-lock.json
+          git commit -m "chore: sync skills and bump version to $NEW_VERSION"
+          git tag $NEW_VERSION
+          git push origin main --tags
+
+      - name: Create GitHub Release
+        if: steps.check_changes.outputs.changes == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.new_version }}
+          name: ${{ steps.bump.outputs.new_version }}
+          generate_release_notes: true
+          make_latest: true

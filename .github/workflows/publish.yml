@@ -2,7 +2,7 @@ name: Publish to npm
 
 on:
   workflow_run:
-    workflows: ["Create Release"]
+    workflows: ["Create Release", "Auto-Sync Skills"]
     types: [completed]
   workflow_dispatch:
 
@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,7 +34,24 @@ jobs:
       - name: Build TypeScript
         run: npm run build
 
+      - name: Check if version already published
+        id: version_check
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          REMOTE_VERSION=$(npm view "$PACKAGE_NAME" version 2>/dev/null || echo "0.0.0")
+          if [ "$LOCAL_VERSION" = "$REMOTE_VERSION" ]; then
+            echo "Version $LOCAL_VERSION already published. Skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "New version $LOCAL_VERSION detected (remote: $REMOTE_VERSION). Publishing."
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to npm
+        if: steps.version_check.outputs.skip != 'true'
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
