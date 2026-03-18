@@ -36,14 +36,6 @@ Edit (or create) `~/.config/opencode/opencode.json`:
 
 OpenCode will automatically download the npm package on next startup via Bun. No manual `npm install` required.
 
-### 2. Make sure `git` is installed
-
-The plugin uses `git clone` and `git pull` under the hood. Verify with:
-
-```bash
-git --version
-```
-
 ## 📁 Skills location
 
 Skills are stored at:
