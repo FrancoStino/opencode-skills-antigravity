@@ -1,16 +1,15 @@
 # opencode-skills-antigravity
 
-An [OpenCode CLI](https://opencode.ai/) plugin that automatically downloads and keeps the [Antigravity Awesome Skills](https://github.com/sickn33/antigravity-awesome-skills) repository up to date every time you start OpenCode.
+An [OpenCode CLI](https://opencode.ai/) plugin that bundles and manages the [Antigravity Awesome Skills](https://github.com/sickn33/antigravity-awesome-skills) repository for instant use.
 
 ## ✨ How it works
 
-Every time OpenCode starts, this plugin runs silently in the background:
+This plugin ensures you always have the latest skills without any network latency at startup.
 
-- **First run:** clones the full `antigravity-awesome-skills` repo into `~/.config/opencode/skills/antigravity-awesome-skills`
-- **Subsequent runs:** runs `git pull origin main` to silently fetch any new skills
-- **Offline:** if no network is available, a warning is shown and OpenCode continues normally
+- **Automated Updates:** A GitHub Action checks for updates in the [Antigravity Awesome Skills](https://github.com/sickn33/antigravity-awesome-skills) repository every hour. If new skills are found, it automatically bundles them and publishes a new version of the NPM package.
+- **Instant Deployment:** When you start OpenCode, the plugin instantly copies the pre-bundled skills to your local machine. This process works perfectly offline and ensures zero network latency during startup.
 
-OpenCode will then automatically detect all skills inside that folder and make them available to the AI agent.
+OpenCode automatically detects all skills and makes them available to the AI agent.
 
 You can then invoke any skill explicitly in your prompt:
 
@@ -41,7 +40,7 @@ OpenCode will automatically download the npm package on next startup via Bun. No
 Skills are stored at:
 
 ```
-~/.config/opencode/skills/
+~/.config/opencode/.agents/skills/
 ```
 
 OpenCode scans this directory automatically at startup.
