@@ -12,7 +12,7 @@ const AntigravityAutoUpdater: Plugin = async (_ctx) => {
     const bundledSkillsPath = path.join(__dirname, "..", "bundled-skills");
 
     // Resolve target path in OpenCode's config directory
-    const skillsPath = path.join(os.homedir(), ".config", "opencode", ".agents", "skills");
+    const skillsPath = path.join(os.homedir(), ".config", "opencode", "skills");
 
     // Create destination directory and copy files
     fs.mkdirSync(skillsPath, { recursive: true });
@@ -23,7 +23,7 @@ const AntigravityAutoUpdater: Plugin = async (_ctx) => {
         const { exec } = await import("child_process");
         const util = await import("util");
         const execAsync = util.promisify(exec);
-        const fallbackPath = path.join(os.homedir(), ".config", "opencode", ".agents", "skills");
+        const fallbackPath = path.join(os.homedir(), ".config", "opencode", "skills");
         await execAsync(`npx --yes antigravity-awesome-skills --path "${fallbackPath}"`);
       } catch (e) {
         // silently fail completely

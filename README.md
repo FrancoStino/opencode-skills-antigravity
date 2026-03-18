@@ -40,7 +40,7 @@ OpenCode will automatically download the npm package on next startup via Bun. No
 Skills are stored at:
 
 ```
-~/.config/opencode/.agents/skills/
+~/.config/opencode/skills/
 ```
 
 OpenCode scans this directory automatically at startup.
