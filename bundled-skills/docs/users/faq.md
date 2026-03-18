@@ -37,6 +37,9 @@ Start from:
 - ✅ **Cursor** (AI IDE)
 - ✅ **Antigravity IDE**
 - ✅ **OpenCode**
+- ✅ **Kiro CLI** (Amazon)
+- ✅ **Kiro IDE** (Amazon)
+- ✅ **AdaL CLI**
 - ⚠️ **GitHub Copilot** (partial support via copy-paste)
 
 ### Are these skills free to use?
