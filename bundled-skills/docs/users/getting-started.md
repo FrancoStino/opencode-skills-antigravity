@@ -1,4 +1,4 @@
-# Getting Started with Antigravity Awesome Skills (V8.1.0)
+# Getting Started with Antigravity Awesome Skills (V8.2.0)
 
 **New here? This guide will help you supercharge your AI Agent in 5 minutes.**
 
