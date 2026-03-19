@@ -26,6 +26,12 @@ Preferred homepage:
 
 > `https://github.com/sickn33/antigravity-awesome-skills`
 
+Preferred social preview:
+
+- use a clean preview image that says `1,273+ Agentic Skills`;
+- mention Claude Code, Cursor, Codex CLI, and Gemini CLI;
+- avoid dense text and tiny logos that disappear in social cards.
+
 Preferred topics:
 
 - `agentic-skills`
@@ -63,6 +69,45 @@ Suggested opening structure:
 1. one-sentence release summary with tool/use-case language;
 2. top changes that matter to new and returning users;
 3. links to install, bundles, workflows, and relevant comparison pages if needed.
+
+Suggested release template:
+
+```md
+## [VERSION] - YYYY-MM-DD - "User-facing title"
+
+> Installable skill library update for Claude Code, Cursor, Codex CLI, Gemini CLI, and related AI coding assistants.
+
+Start here:
+
+- Install: `npx antigravity-awesome-skills`
+- Choose your tool: `README.md#choose-your-tool`
+- Best skills by tool: `README.md#best-skills-by-tool`
+- Bundles: `docs/users/bundles.md`
+- Workflows: `docs/users/workflows.md`
+
+## What's new
+
+- New skills with clear use-case language
+- New bundles, workflows, or onboarding docs
+- New tool support or compatibility improvements
+
+## Improvements
+
+- Reliability and installer updates
+- Quality, validation, or metadata updates
+- Security or maintenance work that affects users
+
+## Who should care
+
+- Claude Code users
+- Cursor users
+- Codex CLI users
+- Gemini CLI users
+
+## Credits
+
+- Contributors and merged PRs
+```
 
 ## Discussions checklist
 
