@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./docs/logo.svg" alt="OpenCode Skills Antigravity" width="480" height="100"/>
+<img src="./docs/logo.svg" alt="OpenCode Skills Antigravity"/>
 
 <br/>
 <br/>
