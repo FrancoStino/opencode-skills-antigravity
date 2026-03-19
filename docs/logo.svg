@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 100" width="480" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100">
   <!-- Background -->
-  <rect width="480" height="100" fill="#0a0a0a" rx="12"/>
+  <rect width="inherit" height="inherit" fill="#0a0a0a" rx="12"/>
 
   <!-- Icon: chevron terminale + accento teal -->
   <g transform="translate(24, 50)">
@@ -19,7 +19,7 @@
   </text>
 
   <!-- Subtitle -->
-  <text x="77" y="68"
+  <text x="76" y="68"
     font-family="'Geist', 'Inter', 'Segoe UI', sans-serif"
     font-size="13" font-weight="400" fill="#aaaaaa" letter-spacing="1.5">
     SKILLS ANTIGRAVITY
