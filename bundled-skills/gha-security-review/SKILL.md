@@ -1,8 +1,9 @@
 ---
 name: gha-security-review
 description: "Find exploitable vulnerabilities in GitHub Actions workflows. Every finding MUST include a concrete exploitation scenario — if you can't build the attack, don't report it."
-risk: unknown
+risk: safe
 source: community
+date_added: 2026-03-16
 ---
 
 <!--

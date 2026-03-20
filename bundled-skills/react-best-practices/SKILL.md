@@ -1,6 +1,6 @@
 ---
 name: react-best-practices
-description: "Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Contains 45 rules across 8 categories, prioritized by impact to guide automated refactoring and code generation."
+description: "Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Use when writing new React components or Next.js pages, implementing data fetching (client or server-side), or reviewing code for performance issues."
 risk: unknown
 source: community
 date_added: "2026-02-27"
