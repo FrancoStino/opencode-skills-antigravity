@@ -154,6 +154,14 @@ It includes:
 - the default Antigravity Windows paths to back up first
 - an optional batch script adapted from [issue #274](https://github.com/sickn33/antigravity-awesome-skills/issues/274)
 
+### I hit context overload on Linux or macOS. What should I do?
+
+If Antigravity becomes unstable only when the full skills library is active, switch to the activation flow instead of exposing every skill at once:
+
+- [agent-overload-recovery.md](agent-overload-recovery.md)
+
+That guide shows how to run `scripts/activate-skills.sh` from a cloned copy of this repository so only the bundles or skill ids you need stay active in `~/.gemini/antigravity/skills`.
+
 ### How do I update skills?
 
 Navigate to your skills directory and pull the latest changes:

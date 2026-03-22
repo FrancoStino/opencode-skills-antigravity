@@ -40,7 +40,7 @@ Bundles are **recommended lists** of skills grouped by role. They help you decid
 
 ❌ Separate installations  
 ❌ Different download commands  
-❌ Something you need to "activate"
+❌ Something most users need to activate during normal install
 
 ### Example: The "Web Wizard" Bundle
 
