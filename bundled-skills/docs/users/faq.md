@@ -44,11 +44,13 @@ Start from:
 
 ### Are these skills free to use?
 
-**Yes!** This repository is licensed under MIT License.
+**Yes.** Original code and tooling are licensed under MIT, and original documentation/non-code written content is licensed under CC BY 4.0.
 
 - ✅ Free for personal use
 - ✅ Free for commercial use
 - ✅ You can modify them
+
+See [../../LICENSE](../../LICENSE), [../../LICENSE-CONTENT](../../LICENSE-CONTENT), and [../sources/sources.md](../sources/sources.md) for attribution and third-party license details.
 
 ### How do these skills avoid overflowing the model context?
 

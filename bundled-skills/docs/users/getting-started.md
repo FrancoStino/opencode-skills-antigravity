@@ -143,7 +143,7 @@ A: Yes! Use the **@skill-creator** skill to build your own.
 A: Follow the recovery steps in [windows-truncation-recovery.md](windows-truncation-recovery.md). It explains which Antigravity storage folders to back up and clear, and includes an optional batch helper adapted from [issue #274](https://github.com/sickn33/antigravity-awesome-skills/issues/274).
 
 **Q: Is this free?**
-A: Yes, MIT License. Open Source forever.
+A: Yes. Original code and tooling are MIT-licensed, and original documentation/non-code written content is CC BY 4.0. See [../../LICENSE](../../LICENSE) and [../../LICENSE-CONTENT](../../LICENSE-CONTENT).
 
 ---
 
