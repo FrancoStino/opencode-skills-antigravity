@@ -1,27 +1,28 @@
 import fs from "fs";
 import path from "path";
 
-export type SkillMeta = {
-  id: string;
-  path: string;
-  name: string;
-  description?: string;
-  category?: string;
-  risk?: string;
-};
+/**
+ * @typedef {{
+ *   id: string,
+ *   path: string,
+ *   name: string,
+ *   description?: string,
+ *   category?: string,
+ *   risk?: string,
+ * }} SkillMeta
+ */
 
-export type Message = {
-  role: "system" | "user" | "assistant";
-  content: string;
-};
+/**
+ * @typedef {{
+ *   role: "system" | "user" | "assistant",
+ *   content: string,
+ * }} Message
+ */
 
 const SKILL_ID_REGEX = /@([a-zA-Z0-9-_./]+)/g;
 
-function collectReferencedSkillIds(
-  messages: Message[],
-  index: Map<string, SkillMeta>
-): string[] {
-  const referencedSkillIds = new Set<string>();
+function collectReferencedSkillIds(messages, index) {
+  const referencedSkillIds = new Set();
 
   for (const msg of messages) {
     for (const match of msg.content.matchAll(SKILL_ID_REGEX)) {
@@ -35,7 +36,7 @@ function collectReferencedSkillIds(
   return [...referencedSkillIds];
 }
 
-function assertValidMaxSkills(maxSkills: number): number {
+function assertValidMaxSkills(maxSkills) {
   if (!Number.isInteger(maxSkills) || maxSkills < 1) {
     throw new Error("maxSkills must be a positive integer.");
   }
@@ -43,10 +44,10 @@ function assertValidMaxSkills(maxSkills: number): number {
   return maxSkills;
 }
 
-export function loadSkillIndex(indexPath: string): Map<string, SkillMeta> {
+export function loadSkillIndex(indexPath) {
   const raw = fs.readFileSync(indexPath, "utf8");
-  const arr = JSON.parse(raw) as SkillMeta[];
-  const map = new Map<string, SkillMeta>();
+  const arr = JSON.parse(raw);
+  const map = new Map();
 
   for (const meta of arr) {
     map.set(meta.id, meta);
@@ -55,15 +56,11 @@ export function loadSkillIndex(indexPath: string): Map<string, SkillMeta> {
   return map;
 }
 
-export function resolveSkillsFromMessages(
-  messages: Message[],
-  index: Map<string, SkillMeta>,
-  maxSkills: number
-): SkillMeta[] {
+export function resolveSkillsFromMessages(messages, index, maxSkills) {
   const skillLimit = assertValidMaxSkills(maxSkills);
   const referencedSkillIds = collectReferencedSkillIds(messages, index);
 
-  const metas: SkillMeta[] = [];
+  const metas = [];
   for (const id of referencedSkillIds) {
     const meta = index.get(id);
     if (meta) {
@@ -77,11 +74,8 @@ export function resolveSkillsFromMessages(
   return metas;
 }
 
-export async function loadSkillBodies(
-  skillsRoot: string,
-  metas: SkillMeta[]
-): Promise<string[]> {
-  const bodies: string[] = [];
+export async function loadSkillBodies(skillsRoot, metas) {
+  const bodies = [];
   const rootPath = path.resolve(skillsRoot);
   const rootRealPath = await fs.promises.realpath(rootPath);
 
@@ -95,13 +89,17 @@ export async function loadSkillBodies(
 
     const skillDirStat = await fs.promises.lstat(skillDirPath);
     if (!skillDirStat.isDirectory() || skillDirStat.isSymbolicLink()) {
-      throw new Error(`Skill directory must be a regular directory inside the skills root: ${meta.id}`);
+      throw new Error(
+        `Skill directory must be a regular directory inside the skills root: ${meta.id}`,
+      );
     }
 
     const fullPath = path.join(skillDirPath, "SKILL.md");
     const skillFileStat = await fs.promises.lstat(fullPath);
     if (!skillFileStat.isFile() || skillFileStat.isSymbolicLink()) {
-      throw new Error(`SKILL.md must be a regular file inside the skills root: ${meta.id}`);
+      throw new Error(
+        `SKILL.md must be a regular file inside the skills root: ${meta.id}`,
+      );
     }
 
     const realPath = await fs.promises.realpath(fullPath);
@@ -117,14 +115,7 @@ export async function loadSkillBodies(
   return bodies;
 }
 
-export async function buildModelMessages(options: {
-  baseSystemMessages: Message[];
-  trajectory: Message[];
-  skillIndex: Map<string, SkillMeta>;
-  skillsRoot: string;
-  maxSkillsPerTurn?: number;
-  overflowBehavior?: "truncate" | "error";
-}): Promise<Message[]> {
+export async function buildModelMessages(options) {
   const {
     baseSystemMessages,
     trajectory,
@@ -136,19 +127,16 @@ export async function buildModelMessages(options: {
   const skillLimit = assertValidMaxSkills(maxSkillsPerTurn);
   const referencedSkillIds = collectReferencedSkillIds(trajectory, skillIndex);
 
-  if (
-    overflowBehavior === "error" &&
-    referencedSkillIds.length > skillLimit
-  ) {
+  if (overflowBehavior === "error" && referencedSkillIds.length > skillLimit) {
     throw new Error(
-      `Too many skills requested in a single turn. Reduce @skill-id usage to ${skillLimit} or fewer.`
+      `Too many skills requested in a single turn. Reduce @skill-id usage to ${skillLimit} or fewer.`,
     );
   }
 
   const selectedMetas = resolveSkillsFromMessages(
     trajectory,
     skillIndex,
-    skillLimit
+    skillLimit,
   );
 
   if (selectedMetas.length === 0) {
@@ -157,7 +145,7 @@ export async function buildModelMessages(options: {
 
   const skillBodies = await loadSkillBodies(skillsRoot, selectedMetas);
 
-  const skillMessages: Message[] = skillBodies.map((body) => ({
+  const skillMessages = skillBodies.map((body) => ({
     role: "system",
     content: body,
   }));
