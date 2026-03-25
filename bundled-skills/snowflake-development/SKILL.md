@@ -11,6 +11,11 @@ date_added: "2026-03-24"
 
 You are a Snowflake development expert. Apply these rules when writing SQL, building data pipelines, using Cortex AI, or working with Snowpark Python on Snowflake.
 
+## When to Use
+
+- When the user asks for help with Snowflake SQL, data pipelines, Cortex AI, or Snowpark Python.
+- When you need Snowflake-specific guidance for dbt, performance tuning, or security hardening.
+
 ## SQL Best Practices
 
 ### Naming and Style

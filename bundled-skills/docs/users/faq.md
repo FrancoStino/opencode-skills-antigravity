@@ -162,6 +162,26 @@ If Antigravity becomes unstable only when the full skills library is active, swi
 
 That guide shows how to run `scripts/activate-skills.sh` from a cloned copy of this repository so only the bundles or skill ids you need stay active in `~/.gemini/antigravity/skills`.
 
+### Gemini CLI hangs after a few turns or says "This is taking a bit longer, we're still on it". What should I do?
+
+Start with a quick isolation check:
+
+1. Start a brand-new Gemini CLI conversation.
+2. Try one prompt with no skills at all.
+3. Try the same task again with only one small skill such as `brainstorming`.
+4. Temporarily reduce your active skill set to 2-5 skills and retry.
+
+How to interpret the result:
+
+- If plain Gemini CLI hangs even without skills, the problem is likely on the Gemini CLI/runtime side rather than this repository.
+- If plain Gemini works, but hangs only when skills are present or after several turns, the likely cause is conversation/context growth.
+
+In that case:
+
+- keep a much smaller active set
+- start fresh conversations more often
+- use the overload guide: [agent-overload-recovery.md](agent-overload-recovery.md)
+
 ### How do I update skills?
 
 Navigate to your skills directory and pull the latest changes:
@@ -183,6 +203,22 @@ Use the `@` symbol followed by the skill name:
 
 ```bash
 @brainstorming help me design a todo app
+```
+
+### Can I invoke a whole bundle like `@Essentials` or `/web-wizard`?
+
+No. Bundles are curated lists of skills, not standalone invokable mega-skills.
+
+Use them in one of these two ways:
+
+- pick individual skills from the bundle and invoke those directly
+- use the activation scripts if you want only that bundle's skills active in Antigravity
+
+Examples:
+
+```bash
+./scripts/activate-skills.sh --clear Essentials
+./scripts/activate-skills.sh --clear "Web Wizard"
 ```
 
 ### Can I use multiple skills at once?

@@ -12,7 +12,7 @@ Great question! Here's what just happened and what to do next:
 
 When you ran `npx antigravity-awesome-skills` or cloned the repository, you:
 
-✅ **Downloaded 1,311+ skill files** to your computer (default: `~/.gemini/antigravity/skills/`; or a custom path like `~/.agent/skills/` if you used `--path`)  
+✅ **Downloaded 1,326+ skill files** to your computer (default: `~/.gemini/antigravity/skills/`; or a custom path like `~/.agent/skills/` if you used `--path`)  
 ✅ **Made them available** to your AI assistant  
 ❌ **Did NOT enable them all automatically** (they're just sitting there, waiting)
 
@@ -32,7 +32,7 @@ Bundles are **recommended lists** of skills grouped by role. They help you decid
 
 **Analogy:**
 
-- You installed a toolbox with 1,311+ tools (✅ done)
+- You installed a toolbox with 1,326+ tools (✅ done)
 - Bundles are like **labeled organizer trays** saying: "If you're a carpenter, start with these 10 tools"
 - You don't install bundles—you **pick skills from them**
 
@@ -41,6 +41,7 @@ Bundles are **recommended lists** of skills grouped by role. They help you decid
 ❌ Separate installations  
 ❌ Different download commands  
 ❌ Something most users need to activate during normal install
+❌ Invokable mega-skills like `@essentials` or `/web-wizard`
 
 ### Example: The "Web Wizard" Bundle
 
@@ -52,6 +53,13 @@ When you see the [Web Wizard bundle](bundles.md#-the-web-wizard-pack), it lists:
 - etc.
 
 These are **recommendations** for which skills a web developer should try first. They're already installed—you just need to **use them in your prompts**.
+
+If you want only one bundle active at a time in Antigravity, use the activation scripts instead of trying to invoke the bundle name directly:
+
+```bash
+./scripts/activate-skills.sh --clear Essentials
+./scripts/activate-skills.sh --clear "Web Wizard"
+```
 
 ---
 
@@ -87,6 +95,8 @@ The exact syntax varies by tool, but it's always simple:
 # In your conversation with Gemini:
 Use the brainstorming skill to help me plan my app
 ```
+
+If Gemini CLI starts hanging after a few turns, try a fresh conversation and temporarily reduce the active set to just 2-5 skills to rule out context growth.
 
 #### Codex CLI
 
@@ -192,7 +202,7 @@ Let's actually use a skill right now. Follow these steps:
 
 ## Step 5: Picking Your First Skills (Practical Advice)
 
-Don't try to use all 1,311+ skills at once. Here's a sensible approach:
+Don't try to use all 1,326+ skills at once. Here's a sensible approach:
 
 If you want a tool-specific starting point before choosing skills, use:
 
@@ -323,7 +333,7 @@ Usually no, but if your AI doesn't recognize a skill:
 
 ### "Can I load all skills into the model at once?"
 
-No. Even though you have 1,311+ skills installed locally, you should **not** concatenate every `SKILL.md` into a single system prompt or context block.
+No. Even though you have 1,326+ skills installed locally, you should **not** concatenate every `SKILL.md` into a single system prompt or context block.
 
 The intended pattern is:
 

@@ -4,6 +4,8 @@
 
 > These packs are curated starter recommendations for humans. Generated bundle ids in `data/bundles.json` are broader catalog/workflow groupings and do not need to map 1:1 to the editorial packs below.
 
+> **Important:** bundles are not invokable mega-skills such as `@web-wizard` or `/essentials-bundle`. Use the individual skills listed in the pack, or use the activation scripts if you want only that bundle's skills active in your live Antigravity directory.
+
 ## Quick Start
 
 1. **Install the repository:**
@@ -21,6 +23,12 @@
    - Cursor: `@skill-name in chat`
    - Gemini CLI: `Use skill-name...`
    - Codex CLI: `Use skill-name...`
+
+If you want a bundle to behave like a focused active subset instead of a reading list, use:
+
+- macOS/Linux: `./scripts/activate-skills.sh --clear Essentials`
+- macOS/Linux: `./scripts/activate-skills.sh --clear "Web Wizard"`
+- Windows: `.\scripts\activate-skills.bat --clear Essentials`
 
 ---
 
@@ -579,4 +587,4 @@ Found a skill that should be in a bundle? Or want to create a new bundle? [Open 
 
 ---
 
-_Last updated: March 2026 | Total Skills: 1,311+ | Total Bundles: 36_
+_Last updated: March 2026 | Total Skills: 1,326+ | Total Bundles: 36_
