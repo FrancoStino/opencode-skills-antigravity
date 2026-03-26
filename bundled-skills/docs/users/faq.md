@@ -29,6 +29,15 @@ Start from:
 - [bundles.md](bundles.md)
 - [workflows.md](workflows.md)
 
+### What is the difference between skills and MCP tools?
+
+- **Skills** are reusable `SKILL.md` playbooks that guide an AI assistant through a workflow.
+- **MCP tools** are integrations or callable capabilities that let the assistant interact with external systems.
+
+Use skills when you want better process, structure, and execution quality. Use MCP tools when you need access to APIs, services, databases, or other systems. Use both when you want reliable workflows plus external capabilities.
+
+For the longer explanation, read [skills-vs-mcp-tools.md](skills-vs-mcp-tools.md).
+
 ### Which AI tools work with these skills?
 
 - ✅ **Claude Code** (Anthropic CLI)

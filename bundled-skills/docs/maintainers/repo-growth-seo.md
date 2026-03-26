@@ -34,26 +34,26 @@ Preferred social preview:
 
 Preferred topics:
 
-- `agentic-skills`
-- `agent-skills`
-- `ai-agents`
-- `ai-agent-skills`
-- `awesome-list`
-- `awesome-lists`
 - `antigravity`
 - `antigravity-skills`
-- `autonomous-coding`
 - `claude-code`
 - `claude-code-skills`
+- `cursor`
+- `cursor-skills`
 - `codex-cli`
 - `codex-skills`
-- `cursor-skills`
-- `developer-tools`
 - `gemini-cli`
 - `gemini-skills`
-- `mcp`
-- `ai-workflows`
+- `kiro`
+- `ai-agents`
+- `ai-agent-skills`
+- `agent-skills`
+- `agentic-skills`
+- `developer-tools`
 - `skill-library`
+- `ai-workflows`
+- `ai-coding`
+- `mcp`
 
 ## Release notes checklist
 

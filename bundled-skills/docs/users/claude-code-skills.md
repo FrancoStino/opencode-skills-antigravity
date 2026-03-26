@@ -4,6 +4,10 @@ If you are looking for **Claude Code skills** you can install from GitHub, this 
 
 Antigravity Awesome Skills gives Claude Code users an installable library of `SKILL.md` playbooks, role-based bundles, and execution workflows. The goal is not just to collect prompts, but to make repeatable engineering tasks easier to invoke, review, and reuse.
 
+## How to use Antigravity Awesome Skills with Claude Code
+
+Install the library into Claude Code, then invoke focused skills directly in the conversation or through the plugin marketplace path. Claude Code benefits most when you keep the prompt specific about the skill, the scope, and the intended output.
+
 ## Why use this repo for Claude Code
 
 - It includes 1,326+ skills instead of a narrow single-domain starter pack.

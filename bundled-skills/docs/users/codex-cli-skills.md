@@ -4,6 +4,14 @@ If you want **Codex CLI skills** that are easy to install and practical in a loc
 
 Antigravity Awesome Skills supports Codex CLI through the `.codex/skills/` path and gives you a wide set of reusable task playbooks for planning, implementation, debugging, testing, security review, and delivery.
 
+## How to use Antigravity Awesome Skills with Codex CLI
+
+Install the library into your Codex path, then invoke focused skills directly in your prompt. The most common pattern is:
+
+1. install with `npx antigravity-awesome-skills --codex`
+2. choose one workflow-oriented skill such as `@brainstorming`, `@concise-planning`, or `@test-driven-development`
+3. ask Codex to apply that skill to a concrete file, feature, test, or bugfix
+
 ## Why use this repo for Codex CLI
 
 - It supports Codex CLI with a dedicated install flag and a standard skills layout.
