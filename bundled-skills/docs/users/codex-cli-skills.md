@@ -27,6 +27,8 @@ npx antigravity-awesome-skills --codex
 
 If you prefer a plugin-style Codex integration, this repository also ships repo-local plugin metadata in `.agents/plugins/marketplace.json` and `plugins/antigravity-awesome-skills/.codex-plugin/plugin.json`.
 
+It also generates bundle-specific Codex plugins so you can install a curated pack such as `Essentials` or `Web Wizard` as a marketplace plugin instead of loading the full library.
+
 ### Verify the install
 
 ```bash

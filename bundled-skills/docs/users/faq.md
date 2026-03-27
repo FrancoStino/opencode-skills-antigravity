@@ -221,6 +221,7 @@ No. Bundles are curated lists of skills, not standalone invokable mega-skills.
 Use them in one of these two ways:
 
 - pick individual skills from the bundle and invoke those directly
+- install the dedicated Claude Code or Codex bundle plugin if you want a marketplace-scoped subset
 - use the activation scripts if you want only that bundle's skills active in Antigravity
 
 Examples:

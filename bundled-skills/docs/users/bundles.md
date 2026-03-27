@@ -4,11 +4,11 @@
 
 > These packs are curated starter recommendations for humans. Generated bundle ids in `data/bundles.json` are broader catalog/workflow groupings and do not need to map 1:1 to the editorial packs below.
 
-> **Important:** bundles are not invokable mega-skills such as `@web-wizard` or `/essentials-bundle`. Use the individual skills listed in the pack, or use the activation scripts if you want only that bundle's skills active in your live Antigravity directory.
+> **Important:** bundles are installable plugin subsets and activation presets, not invokable mega-skills such as `@web-wizard` or `/essentials-bundle`. Use the individual skills listed in the pack, install the bundle as a dedicated marketplace plugin, or use the activation scripts if you want only that bundle's skills active in your live Antigravity directory.
 
 ## Quick Start
 
-1. **Install the repository:**
+1. **Install the repository or bundle plugin:**
 
    ```bash
    npx antigravity-awesome-skills
@@ -18,13 +18,13 @@
 
 2. **Choose your bundle** from the list below based on your role or interests.
 
-3. **Use skills** by referencing them in your AI assistant:
-   - Claude Code: `>> /skill-name help me...`
-   - Cursor: `@skill-name in chat`
+3. **Use bundle plugins or individual skills** in your AI assistant:
+   - Claude Code: install the matching marketplace bundle plugin, or invoke `>> /skill-name help me...`
+   - Codex CLI / Codex app: install the matching bundle plugin where plugin marketplaces are available, or invoke `Use skill-name...`
+   - Cursor: `@skill-name` in chat
    - Gemini CLI: `Use skill-name...`
-   - Codex CLI: `Use skill-name...`
 
-If you want a bundle to behave like a focused active subset instead of a reading list, use:
+If you want a bundle to behave like a focused active subset instead of a full install, use:
 
 - macOS/Linux: `./scripts/activate-skills.sh --clear Essentials`
 - macOS/Linux: `./scripts/activate-skills.sh --clear "Web Wizard"`
@@ -43,6 +43,7 @@ _For everyone. Install these first._
 - [`git-pushing`](../../skills/git-pushing/): Save your work safely.
 - [`kaizen`](../../skills/kaizen/): Continuous improvement mindset.
 - [`systematic-debugging`](../../skills/systematic-debugging/): Debug like a pro.
+
 
 ---
 
@@ -70,6 +71,7 @@ _For building secure applications._
 - [`frontend-security-coder`](../../skills/frontend-security-coder/): XSS prevention and client-side security.
 - [`cc-skill-security-review`](../../skills/cc-skill-security-review/): Security checklist for features.
 - [`pci-compliance`](../../skills/pci-compliance/): Payment card security standards.
+
 
 ---
 
@@ -109,6 +111,7 @@ _For end-to-end web application development._
 - [`database-design`](../../skills/database-design/): Schema design and ORM selection.
 - [`stripe-integration`](../../skills/stripe-integration/): Payments and subscriptions.
 
+
 ---
 
 ## 🤖 AI & Agents
@@ -134,6 +137,7 @@ _For building production LLM applications._
 - [`context-window-management`](../../skills/context-window-management/): Manage LLM context efficiently.
 - [`langfuse`](../../skills/langfuse/): LLM observability and tracing.
 
+
 ---
 
 ## 🎮 Game Development
@@ -148,6 +152,7 @@ _For building games with AI assistants._
 - [`unity-developer`](../../skills/unity-developer/): Unity 6 LTS development.
 - [`godot-gdscript-patterns`](../../skills/godot-gdscript-patterns/): Godot 4 GDScript patterns.
 - [`algorithmic-art`](../../skills/algorithmic-art/): Generate assets with code.
+
 
 ---
 
@@ -185,6 +190,7 @@ _For low-level and performance-critical code._
 - [`memory-safety-patterns`](../../skills/memory-safety-patterns/): Memory-safe programming.
 - [`cpp-pro`](../../skills/cpp-pro/): Modern C++ development.
 
+
 ---
 
 ## 🦄 Product & Business
@@ -221,6 +227,7 @@ _For driving user acquisition and retention._
 - [`ab-test-setup`](../../skills/ab-test-setup/): Validated learning experiments.
 - [`email-sequence`](../../skills/email-sequence/): Automated email campaigns.
 
+
 ---
 
 ## DevOps & Infrastructure
@@ -248,6 +255,7 @@ _For production reliability._
 - [`postmortem-writing`](../../skills/postmortem-writing/): Blameless postmortems.
 - [`performance-engineer`](../../skills/performance-engineer/): Application performance optimization.
 
+
 ---
 
 ## 📊 Data & Analytics
@@ -273,6 +281,7 @@ _For building data pipelines._
 - [`vector-database-engineer`](../../skills/vector-database-engineer/): Vector databases for RAG.
 - [`embedding-strategies`](../../skills/embedding-strategies/): Embedding model selection.
 
+
 ---
 
 ## 🎨 Creative & Content
@@ -287,6 +296,7 @@ _For visuals, content, and branding._
 - [`copy-editing`](../../skills/copy-editing/): Polish your prose.
 - [`algorithmic-art`](../../skills/algorithmic-art/): Code-generated masterpieces.
 - [`interactive-portfolio`](../../skills/interactive-portfolio/): Portfolios that land jobs.
+
 
 ---
 
@@ -303,6 +313,7 @@ _For breaking things before users do._
 - [`ab-test-setup`](../../skills/ab-test-setup/): Validated experiments.
 - [`code-review-checklist`](../../skills/code-review-checklist/): Catch bugs in PRs.
 - [`test-fixing`](../../skills/test-fixing/): Fix failing tests systematically.
+
 
 ---
 
@@ -467,6 +478,7 @@ _For document-heavy workflows, spreadsheets, PDFs, and presentations._
 - [`google-slides-automation`](../../skills/google-slides-automation/): Automate presentation updates in Google Slides.
 - [`google-sheets-automation`](../../skills/google-sheets-automation/): Automate reads and writes in Google Sheets.
 
+
 ---
 
 ## 🧰 Maintainer & OSS
@@ -494,8 +506,6 @@ _For creating and maintaining high-quality SKILL.md assets._
 - [`lint-and-validate`](../../skills/lint-and-validate/): Validate quality after edits.
 - [`verification-before-completion`](../../skills/verification-before-completion/): Confirm changes before claiming done.
 
----
-
 ## 📚 How to Use Bundles
 
 ### 1) Pick by immediate goal
@@ -510,10 +520,10 @@ Pick the minimum set for your current milestone. Expand only when you hit a real
 
 ### 3) Invoke skills consistently
 
-- **Claude Code**: `>> /skill-name help me...`
+- **Claude Code**: install a bundle plugin or use `>> /skill-name help me...`
+- **Codex CLI**: install a bundle plugin where marketplaces are available, or use `Use skill-name...`
 - **Cursor**: `@skill-name` in chat
 - **Gemini CLI**: `Use skill-name...`
-- **Codex CLI**: `Use skill-name...`
 
 ### 4) Build your personal shortlist
 
@@ -587,4 +597,4 @@ Found a skill that should be in a bundle? Or want to create a new bundle? [Open 
 
 ---
 
-_Last updated: March 2026 | Total Skills: 1,328+ | Total Bundles: 36_
+_Last updated: March 2026 | Total Skills: 1,328+ | Total Bundles: 37_

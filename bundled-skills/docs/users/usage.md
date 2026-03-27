@@ -20,28 +20,28 @@ Think of it like installing a toolbox. You have all the tools now, but you need 
 
 ---
 
-## Step 1: Understanding "Bundles" (This is NOT Another Install!)
+## Step 1: Understanding "Bundles" (Recommendations or Focused Installs)
 
 **Common confusion:** "Do I need to download each skill separately?"
 
-**Answer: NO!** Here's what bundles actually are:
+**Answer: NO!** You do not need to download each skill separately. Here's what bundles actually are:
 
 ### What Bundles Are
 
-Bundles are **recommended lists** of skills grouped by role. They help you decide which skills to start using.
+Bundles are **curated groups** of skills organized by role. They help you decide which skills to start using, and they can also be exposed as focused marketplace plugins for Claude Code and Codex.
 
 **Analogy:**
 
 - You installed a toolbox with 1,328+ tools (✅ done)
 - Bundles are like **labeled organizer trays** saying: "If you're a carpenter, start with these 10 tools"
-- You don't install bundles—you **pick skills from them**
+- You can either **pick skills from the tray** or install that tray as a focused marketplace bundle plugin
 
 ### What Bundles Are NOT
 
-❌ Separate installations  
-❌ Different download commands  
-❌ Something most users need to activate during normal install
+❌ Separate skill downloads  
 ❌ Invokable mega-skills like `@essentials` or `/web-wizard`
+❌ Something most users need to activate during normal install
+❌ A replacement for invoking the individual skills inside the bundle
 
 ### Example: The "Web Wizard" Bundle
 
@@ -52,7 +52,7 @@ When you see the [Web Wizard bundle](bundles.md#-the-web-wizard-pack), it lists:
 - `tailwind-patterns`
 - etc.
 
-These are **recommendations** for which skills a web developer should try first. They're already installed—you just need to **use them in your prompts**.
+These are **recommendations** for which skills a web developer should try first. If you have the full library installed, you just need to **use them in your prompts**. If you prefer a narrower install surface, you can install the matching bundle plugin in Claude Code or Codex where plugin marketplaces are available.
 
 If you want only one bundle active at a time in Antigravity, use the activation scripts instead of trying to invoke the bundle name directly:
 
