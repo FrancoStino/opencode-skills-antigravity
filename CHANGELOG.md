@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.18] - 2026-03-27
+### :bug: Bug Fixes
+- [`63c8fa6`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/63c8fa6cc35800a9ce35f120c63e75a283d78065) - Add 'types' field to tsconfig.json *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`b1e21e8`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/b1e21e8b518f88c2558b4866b22f1727b5956a2a) - Update Node.js version in release workflow *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`0305c6a`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/0305c6ad05a4c139c62507fde67a0412be485ea4) - sync skills and bump version to v1.0.18 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.17] - 2026-03-26
 ### :wrench: Chores
 - [`aa8be03`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/aa8be0359b58b569cd3f33ecbb1edf71b4f49250) - sync skills and bump version to v1.0.17 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -120,3 +129,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.15]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.14...v1.0.15
 [v1.0.16]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.15...v1.0.16
 [v1.0.17]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.16...v1.0.17
+[v1.0.18]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.17...v1.0.18
