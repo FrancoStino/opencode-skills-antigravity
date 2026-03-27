@@ -25,6 +25,8 @@ Install the library into your Codex path, then invoke focused skills directly in
 npx antigravity-awesome-skills --codex
 ```
 
+If you prefer a plugin-style Codex integration, this repository also ships repo-local plugin metadata in `.agents/plugins/marketplace.json` and `plugins/antigravity-awesome-skills/.codex-plugin/plugin.json`.
+
 ### Verify the install
 
 ```bash
