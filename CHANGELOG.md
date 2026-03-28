@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.23] - 2026-03-28
+### :wrench: Chores
+- [`b10e2f5`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/b10e2f5b52d54bef52ab8c777c798582e4b942c3) - sync skills and bump version to v1.0.23 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.22] - 2026-03-28
 ### :bug: Bug Fixes
 - [`b16c7d3`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/b16c7d3ecea6d1aba8e1e97db792215017e60e58) - Update dependabot.yml *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -157,3 +162,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.20]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.19...v1.0.20
 [v1.0.21]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.20...v1.0.21
 [v1.0.22]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.21...v1.0.22
+[v1.0.23]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.22...v1.0.23
