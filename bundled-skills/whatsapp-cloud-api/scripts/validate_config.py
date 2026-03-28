@@ -47,19 +47,17 @@ def check_env_vars() -> tuple[bool, list[str]]:
     return len(missing) == 0, missing
 
 
-def _format_api_failure(response: httpx.Response) -> dict[str, str]:
-    """Return sanitized API failure details without echoing sensitive payloads."""
-    try:
-        error = response.json().get("error", {})
-    except ValueError:
-        error = {}
-    return {
-        "status_code": str(response.status_code),
-        "error_code": str(error.get("code", "?")),
-    }
+def _phone_lookup_failure_message() -> str:
+    """Return a static failure summary for the phone lookup."""
+    return "Graph API rejected the phone-number lookup. Review your token, phone number ID, and app permissions."
 
 
-def test_api_connection() -> tuple[bool, dict[str, str]]:
+def _waba_lookup_failure_message() -> str:
+    """Return a static failure summary for the WABA lookup."""
+    return "Graph API rejected the WABA lookup. Review your WABA ID, token, and assigned assets."
+
+
+def test_api_connection() -> tuple[bool, str]:
     """Test connection to WhatsApp Cloud API."""
     token = os.environ.get("WHATSAPP_TOKEN", "")
     phone_id = os.environ.get("PHONE_NUMBER_ID", "")
@@ -73,27 +71,19 @@ def test_api_connection() -> tuple[bool, dict[str, str]]:
         )
 
         if response.status_code == 200:
-            data = response.json()
-            return True, {
-                "phone": str(data.get("display_phone_number", "N/A")),
-                "name": str(data.get("verified_name", "N/A")),
-                "status": str(data.get("code_verification_status", "N/A")),
-                "quality": str(data.get("quality_rating", "N/A")),
-            }
+            return True, "Phone-number endpoint reachable."
 
-        return False, _format_api_failure(response)
+        return False, _phone_lookup_failure_message()
 
     except httpx.ConnectError:
-        return False, {"reason": "Connection failed. Check your internet connection."}
+        return False, "Connection failed. Check your internet connection."
     except httpx.TimeoutException:
-        return False, {"reason": "Request timed out after 10 seconds."}
+        return False, "Request timed out after 10 seconds."
     except Exception as exc:
-        return False, {
-            "reason": f"Unexpected {exc.__class__.__name__} while contacting the Graph API."
-        }
+        return False, f"Unexpected {exc.__class__.__name__} while contacting the Graph API."
 
 
-def test_waba_access() -> tuple[bool, dict[str, str]]:
+def test_waba_access() -> tuple[bool, str]:
     """Test access to WhatsApp Business Account."""
     token = os.environ.get("WHATSAPP_TOKEN", "")
     waba_id = os.environ.get("WABA_ID", "")
@@ -106,16 +96,12 @@ def test_waba_access() -> tuple[bool, dict[str, str]]:
         )
 
         if response.status_code == 200:
-            data = response.json()
-            count = len(data.get("data", []))
-            return True, {"count": str(count)}
+            return True, "WABA phone-numbers endpoint reachable."
 
-        return False, _format_api_failure(response)
+        return False, _waba_lookup_failure_message()
 
     except Exception as exc:
-        return False, {
-            "reason": f"Unexpected {exc.__class__.__name__} while checking WABA access."
-        }
+        return False, f"Unexpected {exc.__class__.__name__} while checking WABA access."
 
 
 def main():
@@ -134,6 +120,7 @@ def main():
     print("=" * 50)
     print("WhatsApp Cloud API - Configuration Validator")
     print("=" * 50)
+    print("Detailed API payloads are intentionally omitted to protect sensitive configuration data.")
     print()
 
     all_ok = True
@@ -157,37 +144,22 @@ def main():
 
     # Check 2: API connection
     print("[2/3] Testing API connection (Phone Number)...")
-    api_ok, api_details = test_api_connection()
+    api_ok, api_message = test_api_connection()
     if api_ok:
-        print("  OK - Connected successfully")
-        print(f"  Phone: {api_details['phone']}")
-        print(f"  Name: {api_details['name']}")
-        print(f"  Status: {api_details['status']}")
-        print(f"  Quality: {api_details['quality']}")
+        print(f"  OK - {api_message}")
     else:
-        if "reason" in api_details:
-            print(f"  FAIL - {api_details['reason']}")
-        else:
-            print("  FAIL - API request failed.")
-            print(f"  HTTP Status: {api_details['status_code']}")
-            print(f"  Error Code: {api_details['error_code']}")
+        print(f"  FAIL - {api_message}")
         all_ok = False
 
     print()
 
     # Check 3: WABA access
     print("[3/3] Testing WABA access...")
-    waba_ok, waba_details = test_waba_access()
+    waba_ok, waba_message = test_waba_access()
     if waba_ok:
-        print("  OK - WABA accessible")
-        print(f"  Phone Numbers Found: {waba_details['count']}")
+        print(f"  OK - {waba_message}")
     else:
-        if "reason" in waba_details:
-            print(f"  FAIL - {waba_details['reason']}")
-        else:
-            print("  FAIL - API request failed.")
-            print(f"  HTTP Status: {waba_details['status_code']}")
-            print(f"  Error Code: {waba_details['error_code']}")
+        print(f"  FAIL - {waba_message}")
         all_ok = False
 
     print()
