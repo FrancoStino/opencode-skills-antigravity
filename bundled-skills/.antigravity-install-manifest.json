@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-03-29T15:34:05.670Z",
+  "updatedAt": "2026-03-29T16:37:41.285Z",
   "entries": [
     ".gitignore",
     "00-andruia-consultant",
@@ -701,6 +701,7 @@
     "javascript-typescript-typescript-scaffold",
     "jira-automation",
     "jobgpt",
+    "jq",
     "json-canvas",
     "julia-pro",
     "junta-leiloeiros",
@@ -1215,6 +1216,7 @@
     "threejs-skills",
     "threejs-textures",
     "tiktok-automation",
+    "tmux",
     "todoist-automation",
     "tool-design",
     "tool-use-guardian",
@@ -1261,6 +1263,7 @@
     "vexor-cli",
     "vibe-code-auditor",
     "vibers-code-review",
+    "viboscope",
     "videodb",
     "videodb-skills",
     "viral-generator-builder",

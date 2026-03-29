@@ -8,6 +8,8 @@ baseline.
 - Current verification target: `main@d63d99381b8f613f99c8cb7b758e7879b401f8a0`
 - The 2026-03-15 markdown file and CSV remain useful as historical input, not
   as the current source of truth.
+- A machine-readable companion export for this refresh lives at
+  [`security-findings-triage-2026-03-29-refresh.csv`](security-findings-triage-2026-03-29-refresh.csv).
 - Status meanings are unchanged:
   `still present and exploitable`, `still present but low practical risk`,
   `obsolete/not reproducible on current HEAD`, `duplicate of another finding`.
