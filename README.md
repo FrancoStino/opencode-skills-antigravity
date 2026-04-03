@@ -139,7 +139,7 @@ If you were using the old package, simply update your `~/.config/opencode/openco
 ```json
 {
   "plugin": [
-    "opencode-skills-collection"
+    "opencode-skills-collection@latest"
   ]
 }
 ```
