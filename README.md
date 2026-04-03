@@ -60,7 +60,7 @@ Add the plugin to your global OpenCode configuration file at `~/.config/opencode
 ```json
 {
   "plugin": [
-    "opencode-skills-collection"
+    "opencode-skills-collection@latest"
   ]
 }
 ```
