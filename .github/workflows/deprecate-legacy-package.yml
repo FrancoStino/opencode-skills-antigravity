@@ -37,7 +37,7 @@ jobs:
           {
             "name": "opencode-skills-antigravity",
             "version": "${{ steps.version.outputs.next }}",
-            "description": "⚠️ Deprecated: renamed to opencode-skills-collection",
+            "description": "Deprecated: renamed to opencode-skills-collection",
             "main": "index.js",
             "dependencies": {
               "opencode-skills-collection": "latest"
@@ -60,6 +60,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deprecate legacy package on npm
-        run: npm deprecate opencode-skills-antigravity "⚠️ Package renamed to opencode-skills-collection. Please update your plugin config: https://github.com/FrancoStino/opencode-skills-collection"
+        run: >
+          npm deprecate opencode-skills-antigravity
+          'Package renamed to opencode-skills-collection. Please update your plugin config:
+          https://github.com/FrancoStino/opencode-skills-collection'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
