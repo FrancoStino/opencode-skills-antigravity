@@ -107,5 +107,10 @@ export const DOMAIN_HEURISTICS: Readonly<Record<string, readonly string[]>> = {
 
 export const POINTER_SUFFIX = "-category-pointer" as const;
 export const SKILL_FILENAME = "SKILL.md" as const;
-export const VAULT_DIR_NAME = ".opencode-skill-libraries" as const;
+
+/**
+ * Name of the vault directory that stores raw skills, co-located
+ * with the rest of OpenCode config under ~/.config/opencode/
+ */
+export const VAULT_DIR_NAME = "skill-libraries" as const;
 export const UNCATEGORIZED_CATEGORY = "_uncategorized" as const;

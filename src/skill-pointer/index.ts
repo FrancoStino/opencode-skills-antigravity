@@ -10,9 +10,23 @@ export interface SkillPointerOptions {
   activeSkillsDir: string;
   /**
    * Absolute path of the hidden vault where raw skills are stored.
-   * Defaults to ~/.opencode-skill-libraries
+   * Defaults to ~/.config/opencode/skill-libraries
+   *
+   * Co-located with the rest of OpenCode config to keep all
+   * OpenCode-related data under one XDG-style directory.
    */
   vaultDir?: string;
+}
+
+/**
+ * Resolves the default vault path: ~/.config/opencode/skill-libraries
+ *
+ * Keeping the vault inside ~/.config/opencode/ means:
+ * - all OpenCode data lives in one place (easy to backup / delete)
+ * - no pollution of the home directory root
+ */
+function resolveDefaultVaultDir(): string {
+  return path.join(os.homedir(), ".config", "opencode", VAULT_DIR_NAME);
 }
 
 /**
@@ -24,8 +38,7 @@ export interface SkillPointerOptions {
  * instead of 800+, reducing startup context from ~80k tokens to ~255.
  */
 export function runSkillPointer(options: SkillPointerOptions): void {
-  const vaultDir =
-    options.vaultDir ?? path.join(os.homedir(), VAULT_DIR_NAME);
+  const vaultDir = options.vaultDir ?? resolveDefaultVaultDir();
 
   ensureDir(options.activeSkillsDir);
   ensureDir(vaultDir);
