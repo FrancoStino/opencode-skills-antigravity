@@ -1,6 +1,6 @@
 import os from "os";
 import path from "path";
-import { VAULT_DIR_NAME } from "../constants/heuristics.js";
+import { VAULT_DIR_NAME } from "../constants/constants.js";
 import { ensureDir } from "../utils/fs.utils.js";
 import { generatePointers } from "./pointer-generator.js";
 import { installSkillsToVault, loadSkillsIndex } from "./vault-installer.js";
@@ -24,10 +24,10 @@ function resolveDefaultVaultDir(): string {
 /**
  * Orchestrates the full SkillPointer pipeline:
  *
- * 1. Reads skills_index.json (bundled from upstream Antigravity)
+ * 1. Reads skills_index.json bundled alongside the skills snapshot.
  * 2. Copies bundled skills directly into the vault, categorised by the index.
  * 3. Generates pointer SKILL.md files in activeSkillsDir with full skill
- *    listings so keyword searches (e.g. "laravel") work out of the box.
+ *    listings so keyword searches (e.g. "laravel") resolve out of the box.
  *
  * The activeSkillsDir is never used as a staging area — user custom
  * skills already present there are never moved or overwritten.
