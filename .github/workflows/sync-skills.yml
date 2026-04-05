@@ -52,7 +52,8 @@ jobs:
 
       - name: Bump version and push
         id: bump
-        if: steps.check_changes.outputs.changes == 'true'
+        # Only run on main to avoid accidental version bumps on open PRs
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         run: |
           npm ci
           NEW_VERSION=$(npm version patch --no-git-tag-version)
@@ -64,14 +65,14 @@ jobs:
 
       - name: Generate changelog
         id: changelog
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ steps.bump.outputs.new_version }}
 
       - name: Commit CHANGELOG.md
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
@@ -79,7 +80,7 @@ jobs:
           file_pattern: CHANGELOG.md
 
       - name: Create GitHub Release
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bump.outputs.new_version }}
